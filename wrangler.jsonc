@@ -1,0 +1,33 @@
+/**
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "blockchain-mcp-nullshot",
+	"main": "index.ts",
+	"compatibility_flags": ["nodejs_compat"],
+	"compatibility_date": "2025-11-01",
+	"observability": {
+		"enabled": true
+	},
+	"vars": {
+		"MORALIS_API_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6ImY4M2EyM2RmLTc4M2EtNGI2Mi1iNTU0LTYyNmI1OWM3OWRjOSIsIm9yZ0lkIjoiNDc4NDc4IiwidXNlcklkIjoiNDkyMjU4IiwidHlwZUlkIjoiY2NmYWI0MGYtNDJiOC00MzBkLTllMDMtOThlMjhmNzQ3YTljIiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3NjE3Mzc3ODIsImV4cCI6NDkxNzQ5Nzc4Mn0.V5t1RF0doon5YwwQ1h9SsPIyT7ELMc-mqNU3bDVRtME",
+		"DEXCHECK_API_KEY": "rs5MvYhFXVpczOtZFotVTOM6IyMGkgAo",
+		"TAAPI_API_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbHVlIjoiNjkwYTVlNTU4MDZmZjE2NTFlNjVjOGQ4IiwiaWF0IjoxNzYyMjg3MjA1LCJleHAiOjMzMjY2NzUxMjA1fQ.GjexArCmoKYUQcmdcFHAZgACYt72APP8vkwpZ1Hp_gU"
+
+	},
+	"durable_objects": {
+		"bindings": [
+		{
+			"name": "BLOCKCHAIN_MCP",
+			"class_name": "BlockChainMCP"
+		}
+		]
+	},
+	"migrations": [
+		{
+		"tag": "v1",
+		"new_sqlite_classes": ["BlockChainMCP"]
+		}
+  	],
+}

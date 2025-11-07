@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "apis": [
+    {
+      "identifier": "dexcheck",
+      "source": "@dexcheck/v1.0#101v3ttymfuygi5x",
+      "integrity": "sha512-94r/+nDkIz8ECc5DVzZWVTR8xCt2w53O/S4+EDn+ywjCUixlEGV7nbEsfrdqCEI/oQBz7FmwR9R/PEjwgGhFxA==",
+      "installerVersion": "6.1.3"
+    }
+  ]
+}
