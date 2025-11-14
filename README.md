@@ -136,7 +136,7 @@ Add to your MCP settings configuration:
 }
 ```
 
-## Usage Examples
+## Usage Examples for simplicity
 
 ### Setting Up Price Alerts
 
@@ -184,17 +184,6 @@ Show me recent whale transactions over $100,000
 - Alerts are automatically removed after triggering
 - Supports multiple alert types: price_above, price_below, percent_change
 
-## Technical Notes
 
-- Built on Cloudflare Workers for global edge deployment
-- Uses Durable Objects for persistent alert storage
-- Rate limits respected for all external APIs
-- DexScreener: 300 requests/minute
 
-## License
-
-See LICENSE file for details.
-
-## Support
-
-For issues or questions, please open an issue on the repository.
+*Built with NullShot's MCP TypeScript Framework*
