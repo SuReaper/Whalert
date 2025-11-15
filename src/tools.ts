@@ -10,7 +10,7 @@ import { tokenSecurityChecker } from './tools/tokenSecurityChecker';
 import { tokenSearchAndInfo } from './tools/tokenSearchAndInfo';
 import { tokenPriceAlert } from './tools/tokenPriceAlert';  // ← ADD THIS LINE
 
-export function setupServerTools(server: McpServer, env: Env, getAlertMonitor: () => any) {  // ← ADD env AND getAlertMonitor parameters
+export function setupServerTools(server: McpServer, env: Env, getAlertMonitor: () => any) { 
   // fetches Token Balances for an specific wallet (REQUIRES MORALIS'S API KEY)
   getWalletTokenBalance(server);
   // gets Transactions History for an specific wallet. (REQUIRES MORALIS'S API KEY)
