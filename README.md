@@ -39,7 +39,7 @@ A professional MCP server providing real-time blockchain data access, comprehens
 3. Follow the prompts to create your bot
 4. Copy the token provided (format: `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11`)
 5. Get your Chat ID:
-   - Send `/start` to [@userinfobot](https://t.me/userinfobot)
+   - Send `/start` to the deployed bot (after setting webhook, etc.)
    - Copy the Chat ID number provided
 
 ### 2. Configure API Keys
@@ -106,7 +106,7 @@ Send `/start` to your bot on Telegram. You should receive a welcome message with
 
 ## MCP Configuration
 
-### Roo Code / Claude Desktop
+### Roo Code / etc.
 
 Add to your MCP settings configuration:
 
@@ -186,4 +186,4 @@ Show me recent whale transactions over $100,000
 
 
 
-*Built with Whalert*
+*Built with Nullshot's typescript mcp framework.*
