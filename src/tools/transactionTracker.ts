@@ -208,7 +208,6 @@ export function transactionTracker(server: any) {
         // builds the response
         const responseText = [
           `🔍 Transaction Details`,
-          `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
           ``,
           `📋 Basic Info:`,
           `   Hash: ${formattedTx.basic_info.hash}`,

@@ -236,7 +236,6 @@ export function getWalletTokenTransactions(server: any) {
         const chainList = Object.keys(allTransactions).join(', ').toUpperCase();
         const responseText = [
           `WALLET TRANSACTION HISTORY`,
-          `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
           `Total Transactions: ${totalTransactions}`,
           `Chains Analyzed: ${chainList}`,
           `Wallet Address: ${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`,

@@ -219,7 +219,6 @@ export function whaleTracker(server: any) {
         // format the response text with emojis and nice formatting
         const responseText = [
           `WHALE TRACKER REPORT`,
-          `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
           `Total Transactions: ${allTransactions.length}`,
           `Chain Distribution: ${Object.entries(chainDistribution).map(([chain, count]) => `${chain}: ${count}`).join(' | ')}`,
           `Total Volume: $${totalVolume.toLocaleString(undefined, { maximumFractionDigits: 2 })}`,

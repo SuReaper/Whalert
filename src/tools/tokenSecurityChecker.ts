@@ -362,7 +362,6 @@ export function tokenSecurityChecker(server: any) {
 
         const responseText = [
           `${getRiskEmoji(riskLevel)} TOKEN SECURITY ANALYSIS`,
-          `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
           ``,
           `TOKEN INFORMATION`,
           `Name: ${analysis.token_info.name}`,

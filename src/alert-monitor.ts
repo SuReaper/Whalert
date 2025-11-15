@@ -54,10 +54,9 @@ export class TokenAlertMonitor extends DurableObject<Env> {
     bot.command('start', async (ctx) => {
       const chatId = ctx.chat.id;
       await ctx.reply(
-        `*Welcome to NullShot BlockChain Explorer*\n` +
-        `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+        `*Welcome to Whalert!*\n\n` +
         `Your Chat ID: \`${chatId}\`\n\n` +
-        `This ID is required when setting up price alerts through the MCP interface. ` +
+        `This ID is required when setting up price alerts through the MCP server. ` +
         `You'll receive instant notifications here whenever your price targets are reached.\n\n` +
         `*Available Commands:*\n` +
         `/start — Display this welcome message\n` +
@@ -150,8 +149,7 @@ export class TokenAlertMonitor extends DurableObject<Env> {
       }).join('\n\n');
 
       await ctx.reply(
-        `*Active Price Alerts* (${alertsWithPrices.length})\n` +
-        `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n${alertList}`,
+        `*Active Price Alerts* (${alertsWithPrices.length})\n\n${alertList}`,
         { parse_mode: 'Markdown' }
       );
     });
@@ -274,8 +272,7 @@ export class TokenAlertMonitor extends DurableObject<Env> {
           if (alert.alertType === 'price_above' && currentPrice > alert.targetValue) {
             shouldTrigger = true;
             const change = (((currentPrice - alert.currentPrice) / alert.currentPrice) * 100).toFixed(2);
-            triggerMessage = `*Price Alert Triggered*\n` +
-              `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+            triggerMessage = `*Price Alert Triggered*\n\n` +
               `${alert.tokenName} (${alert.tokenSymbol}) has surpassed your target price.\n\n` +
               `Current Price: $${currentPrice < 0.01 ? currentPrice.toFixed(8) : currentPrice.toFixed(2)}\n` +
               `Target Price: $${alert.targetValue}\n` +
@@ -284,8 +281,7 @@ export class TokenAlertMonitor extends DurableObject<Env> {
           else if (alert.alertType === 'price_below' && currentPrice < alert.targetValue) {
             shouldTrigger = true;
             const change = (((currentPrice - alert.currentPrice) / alert.currentPrice) * 100).toFixed(2);
-            triggerMessage = `*Price Alert Triggered*\n` +
-              `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+            triggerMessage = `*Price Alert Triggered*\n\n` +
               `${alert.tokenName} (${alert.tokenSymbol}) has fallen below your target price.\n\n` +
               `Current Price: $${currentPrice < 0.01 ? currentPrice.toFixed(8) : currentPrice.toFixed(2)}\n` +
               `Target Price: $${alert.targetValue}\n` +
@@ -298,8 +294,7 @@ export class TokenAlertMonitor extends DurableObject<Env> {
             if (alert.targetValue > 0 && percentChange >= alert.targetValue) {
               shouldTrigger = true;
               const startPrice = alert.currentPrice < 0.01 ? alert.currentPrice.toFixed(8) : alert.currentPrice.toFixed(2);
-              triggerMessage = `*Price Alert Triggered*\n` +
-                `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+              triggerMessage = `*Price Alert Triggered*\n\n` +
                 `${alert.tokenName} (${alert.tokenSymbol}) has gained ${percentChange.toFixed(2)}%\n\n` +
                 `Current Price: $${currentPrice < 0.01 ? currentPrice.toFixed(8) : currentPrice.toFixed(2)}\n` +
                 `Starting Price: $${startPrice}\n` +
@@ -307,8 +302,7 @@ export class TokenAlertMonitor extends DurableObject<Env> {
             } else if (alert.targetValue < 0 && percentChange <= alert.targetValue) {
               shouldTrigger = true;
               const startPrice = alert.currentPrice < 0.01 ? alert.currentPrice.toFixed(8) : alert.currentPrice.toFixed(2);
-              triggerMessage = `*Price Alert Triggered*\n` +
-                `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+              triggerMessage = `*Price Alert Triggered*\n\n` +
                 `${alert.tokenName} (${alert.tokenSymbol}) has dropped ${Math.abs(percentChange).toFixed(2)}%\n\n` +
                 `Current Price: $${currentPrice < 0.01 ? currentPrice.toFixed(8) : currentPrice.toFixed(2)}\n` +
                 `Starting Price: $${startPrice}\n` +

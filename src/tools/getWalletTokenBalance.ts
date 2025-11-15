@@ -163,7 +163,6 @@ export function getWalletTokenBalance(server: any) {
         // format the response text with emojis and formatting
         const responseText = [
           `WALLET TOKEN BALANCE REPORT`,
-          `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
           `Total Tokens: ${allTokens.length}`,
           `Chains Analyzed: ${CHAINS.join(', ').toUpperCase()}`,
           `Wallet Address: ${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`,

@@ -179,7 +179,6 @@ export function tokenPriceAlert(server: McpServer, env: Env, getAlertMonitor: ()
           `Token Search Results for "${searchQuery}"`,
           `Found ${data.pairs.length} total pairs\n`,
           `TOP ${topPairs.length} MATCHING TOKENS`,
-          `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
           ...tokenOptions.map((token: TokenOption) => [
             ``,
             `${token.index}. ${token.name} (${token.symbol}) — ${token.chain}`,
@@ -190,7 +189,6 @@ export function tokenPriceAlert(server: McpServer, env: Env, getAlertMonitor: ()
             `   View on DEX: ${token.dexUrl}`
           ].join('\n')),
           ``,
-          `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
           `ALERT CONFIGURATION`,
           `   Type: ${alertType.replace('_', ' ').toUpperCase()}`,
           `   Trigger Condition: ${alertDescription}`,
@@ -298,7 +296,6 @@ export function tokenPriceAlert(server: McpServer, env: Env, getAlertMonitor: ()
 
         const responseText = [
           `PRICE ALERT ACTIVATED`,
-          `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`,
           `MONITORING DETAILS`,
           `Token: ${params.tokenName} (${params.tokenSymbol})`,
           `Chain: ${params.chainId.toUpperCase()}`,
@@ -317,7 +314,7 @@ export function tokenPriceAlert(server: McpServer, env: Env, getAlertMonitor: ()
           const bot = new Bot(env.TGBOT_TOKEN);
           await bot.api.sendMessage(
             params.telegramChatId,
-            `*Price Alert Configured*\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+            `*Price Alert Configured*\n\n` +
             `${params.tokenName} (${params.tokenSymbol})\n\n` +
             `You will be notified when price ${conditionText}\n\n` +
             `Current Price: $${priceFormatted}`,
@@ -378,7 +375,7 @@ export function tokenPriceAlert(server: McpServer, env: Env, getAlertMonitor: ()
             const bot = new Bot(env.TGBOT_TOKEN);
             await bot.api.sendMessage(
               telegramChatId,
-              `*Alert Canceled*\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+              `*Alert Canceled*\n\n` +
               `${alert.tokenName} (${alert.tokenSymbol})\nAlert ID: ${alertId}`,
               { parse_mode: 'Markdown' }
             );

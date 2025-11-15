@@ -10,6 +10,8 @@ declare namespace Cloudflare {
 	}
 }
 interface Env extends Cloudflare.Env {
+  TGBOT_TOKEN: string;
+  TOKEN_ALERT_MONITOR: any;
   MORALIS_API_KEY: any;
 }
 

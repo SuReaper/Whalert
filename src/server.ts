@@ -11,7 +11,7 @@ export class BlockChainMCP extends McpHonoServerDO<Env> {
 
   getImplementation(): Implementation {
     return {
-      name: 'NullShot BlockChain MCP',
+      name: 'Whalert',
       version: '1.0.0',
     };
   }

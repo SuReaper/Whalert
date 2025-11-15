@@ -72,7 +72,7 @@ describe('MCP Client Connection Tests', () => {
       expect(serverInfo).not.toBeUndefined();
       
       if (serverInfo) {
-        expect(serverInfo.name).toBe('NullShot BlockChain MCP');
+        expect(serverInfo.name).toBe('Whalert');
         expect(serverInfo.version).toBe('1.0.0');
       }
       

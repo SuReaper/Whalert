@@ -129,7 +129,6 @@ export function tokenSearchAndInfo(server: any) {
         // build a nice looking response with all the details
         const responseText = [
           `TOKEN SEARCH RESULTS FOR "${searchQuery}"`,
-          `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
           `Found ${data.pairs.length} total pairs | Displaying top ${topPairs.length}`,
           '',
           ...formattedTokens.map((token, index) => {

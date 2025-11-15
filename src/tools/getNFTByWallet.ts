@@ -192,7 +192,6 @@ export function getNFTByWallet(server: any) {
         // format the response text with emojis and formatting
         const responseText = [
           `NFT PORTFOLIO ANALYSIS`,
-          `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
           `Total NFTs: ${formattedNFTs.length}`,
           `Chain: ${chain.toUpperCase()}`,
           `Verified Collections: ${verifiedCount}/${formattedNFTs.length}`,

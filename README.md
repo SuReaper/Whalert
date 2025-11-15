@@ -1,6 +1,6 @@
-# NullShot BlockChain Explorer
+# Whalert
 
-A professional MCP server built on NullShot's TypeScript Framework, providing real-time blockchain data access, comprehensive token analysis, and automated price alerts via Telegram. All tools utilize free APIs suitable for personal usage.
+A professional MCP server providing real-time blockchain data access, comprehensive token analysis, and automated price alerts via Telegram. All tools utilize free APIs suitable for personal usage.
 
 ## Features
 
@@ -113,7 +113,7 @@ Add to your MCP settings configuration:
 ```json
 {
   "mcpServers": {
-    "nullshot-blockchain-explorer": {
+    "whalert": {
       "type": "sse",
       "url": "https://your-worker.workers.dev/sse",
       "alwaysAllow": [
@@ -186,4 +186,4 @@ Show me recent whale transactions over $100,000
 
 
 
-*Built with NullShot's MCP TypeScript Framework*
+*Built with Whalert*
