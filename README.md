@@ -2,6 +2,7 @@
 
 A professional MCP server providing real-time blockchain data access, comprehensive token analysis, and automated price alerts via Telegram. All tools utilize free APIs suitable for personal usage.
 
+
 ## Features
 
 ### Available Tools
@@ -134,6 +135,58 @@ Add to your MCP settings configuration:
     }
   }
 }
+```
+
+## Diagram
+
+## Architecture
+```mermaid
+graph TB
+    subgraph "AI Layer"
+        A[AI Agent/MCP Client]
+    end
+    
+    subgraph "Whalert MCP Server"
+        B[SSE Endpoint]
+        C[Tool Handler]
+        D[Telegram Webhook]
+        E[Cron Monitor]
+    end
+    
+    subgraph "Data Sources"
+        F[Moralis API]
+        G[DexCheck API]
+        H[Taapi API]
+        I[DEX Screener]
+    end
+    
+    subgraph "Alert System"
+        J[KV Storage]
+        K[Telegram Bot]
+    end
+    
+    A -->|MCP Protocol| B
+    B --> C
+    C --> F
+    C --> G
+    C --> H
+    C --> I
+    D -->|Commands| K
+    E -->|Every 5 min| J
+    J -->|Price Check| I
+    J -->|Send Alert| K
+    
+    style A fill:#7B68EE,stroke:#5D4FB3,stroke-width:3px,color:#fff
+    style B fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    style C fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    style D fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    style E fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    style F fill:#50C878,stroke:#3A9B5C,stroke-width:2px,color:#fff
+    style G fill:#50C878,stroke:#3A9B5C,stroke-width:2px,color:#fff
+    style H fill:#50C878,stroke:#3A9B5C,stroke-width:2px,color:#fff
+    style I fill:#50C878,stroke:#3A9B5C,stroke-width:2px,color:#fff
+    style J fill:#FF6B6B,stroke:#CC5555,stroke-width:2px,color:#fff
+    style K fill:#FF6B6B,stroke:#CC5555,stroke-width:2px,color:#fff
 ```
 
 ## Usage Examples for simplicity

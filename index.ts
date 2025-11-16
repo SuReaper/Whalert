@@ -12,7 +12,7 @@ export default {
       const id = env.TOKEN_ALERT_MONITOR.idFromName('global');
       return env.TOKEN_ALERT_MONITOR.get(id).fetch(request);
     }
-    // ← END OF NEW BLOCK
+    
 
     const sessionIdStr = url.searchParams.get('sessionId');
     const id = sessionIdStr
