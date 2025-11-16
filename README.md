@@ -159,11 +159,11 @@ graph TB
     end
     
     subgraph Storage["**Persistent Layer**"]
-        J[Cloudflare KV<br/>Alert Storage]
+        J[Cloudflare<br/>Storage]
         K[Telegram Bot<br/>Notifications]
     end
     
-    A <-->|MCP Protocol| B
+    A <-->|NullShot's MCP| B
     B --> C
     C -->|Token Data| F
     C -->|Whale Txns| G
