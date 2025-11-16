@@ -137,56 +137,53 @@ Add to your MCP settings configuration:
 }
 ```
 
-## Diagram
-
-## Architecture
+## Architecture Overview
 ```mermaid
 graph TB
-    subgraph "AI Layer"
-        A[AI Agent/MCP Client]
+    subgraph Client["🎯 AI Agent Layer"]
+        A[MCP Client<br/>Roo Code / Cline / Claude]
     end
     
-    subgraph "Whalert MCP Server"
+    subgraph Server["⚡ Whalert MCP Server - Cloudflare Workers"]
         B[SSE Endpoint]
-        C[Tool Handler]
-        D[Telegram Webhook]
-        E[Cron Monitor]
+        C[Tool Router]
+        D[Alert Engine]
+        E[Telegram Handler]
     end
     
-    subgraph "Data Sources"
-        F[Moralis API]
-        G[DexCheck API]
-        H[Taapi API]
-        I[DEX Screener]
+    subgraph APIs["🌐 External APIs"]
+        F[Moralis<br/>Wallet & NFT Data]
+        G[DexCheck<br/>Whale Tracking]
+        H[Taapi<br/>Technical Analysis]
+        I[DEX Screener<br/>Token Prices]
     end
     
-    subgraph "Alert System"
-        J[KV Storage]
-        K[Telegram Bot]
+    subgraph Storage["💾 Persistent Layer"]
+        J[Cloudflare KV<br/>Alert Storage]
+        K[Telegram Bot<br/>Notifications]
     end
     
-    A -->|MCP Protocol| B
+    A <-->|MCP Protocol| B
     B --> C
-    C --> F
-    C --> G
-    C --> H
-    C --> I
-    D -->|Commands| K
-    E -->|Every 5 min| J
-    J -->|Price Check| I
-    J -->|Send Alert| K
+    C -->|Token Data| F
+    C -->|Whale Txns| G
+    C -->|Indicators| H
+    C -->|Price Info| I
+    C <-->|Store/Retrieve| J
+    D -->|Check Alerts| J
+    D -->|Price Data| I
+    D -->|Send Alert| K
+    E <-->|Bot Commands| K
     
-    style A fill:#7B68EE,stroke:#5D4FB3,stroke-width:3px,color:#fff
-    style B fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
-    style C fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
-    style D fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
-    style E fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
-    style F fill:#50C878,stroke:#3A9B5C,stroke-width:2px,color:#fff
-    style G fill:#50C878,stroke:#3A9B5C,stroke-width:2px,color:#fff
-    style H fill:#50C878,stroke:#3A9B5C,stroke-width:2px,color:#fff
-    style I fill:#50C878,stroke:#3A9B5C,stroke-width:2px,color:#fff
-    style J fill:#FF6B6B,stroke:#CC5555,stroke-width:2px,color:#fff
-    style K fill:#FF6B6B,stroke:#CC5555,stroke-width:2px,color:#fff
+    classDef clientStyle fill:#7B68EE,stroke:#5D4FB3,stroke-width:3px,color:#fff,font-weight:bold
+    classDef serverStyle fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef apiStyle fill:#50C878,stroke:#3A9B5C,stroke-width:2px,color:#fff
+    classDef storageStyle fill:#FF6B6B,stroke:#CC5555,stroke-width:2px,color:#fff
+    
+    class A clientStyle
+    class B,C,D,E serverStyle
+    class F,G,H,I apiStyle
+    class J,K storageStyle
 ```
 
 ## Usage Examples for simplicity
