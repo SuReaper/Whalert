@@ -140,25 +140,25 @@ Add to your MCP settings configuration:
 ## Architecture Overview
 ```mermaid
 graph TB
-    subgraph Client["AI Agent Layer"]
+    subgraph Client["**AI Agent Layer**"]
         A[MCP Client<br/>Roo Code / Cline / Claude]
     end
     
-    subgraph Server["Whalert MCP Server"]
+    subgraph Server["**Whalert MCP Server**"]
         B[SSE Endpoint]
         C[Tool Router]
         D[Alert Engine]
         E[Telegram Handler]
     end
     
-    subgraph APIs["🌐 External APIs"]
+    subgraph APIs["**External APIs**"]
         F[Moralis<br/>Wallet & NFT Data]
         G[DexCheck<br/>Whale Tracking]
         H[Taapi<br/>Technical Analysis]
         I[DEX Screener<br/>Token Prices]
     end
     
-    subgraph Storage["💾 Persistent Layer"]
+    subgraph Storage["**Persistent Layer**"]
         J[Cloudflare KV<br/>Alert Storage]
         K[Telegram Bot<br/>Notifications]
     end
