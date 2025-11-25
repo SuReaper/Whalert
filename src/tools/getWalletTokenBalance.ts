@@ -5,7 +5,7 @@ import { getFearGreed, formatFearGreed } from '../utils.js';
 export function getWalletTokenBalance(server: any) {
   server.tool(
     'getWalletTokenBalance',
-    'Gets token balances for a wallet across ETH, Avalanche, and BSC chains. Filters out tokens with total value less than minimum USD value.',
+    'Gets token balances for a wallet across ETH, Avalanche, BSC and Monad chains. Filters out tokens with total value less than minimum USD value.',
     {
       walletAddress: z.string().describe('The wallet address to check (0x...)'),
       minValue: z.number().optional().describe('Minimum USD value to include (default: 1)')
@@ -64,7 +64,7 @@ export function getWalletTokenBalance(server: any) {
       }
 
       // which chains we want to check
-      const CHAINS = ['eth', 'avalanche', 'bsc'] as const;
+      const CHAINS = ['eth', 'avalanche', 'bsc', 'monad'] as const;
       const MORALIS_API_BASE = 'https://deep-index.moralis.io/api/v2.2';
 
       // standard headers for all requests

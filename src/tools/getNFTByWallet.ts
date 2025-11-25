@@ -7,7 +7,7 @@ export function getNFTByWallet(server: any) {
     'Gets NFT collection owned by a wallet address. Returns up to 5 NFTs with details like floor price, rarity, and last sale info. User must specify which chain to check. (eth, bsc, etc.)',
     {
       walletAddress: z.string().describe('The wallet address to check (0x...)'),
-      chain: z.string().describe('Chain to check - options: eth, sepolia, holesky, polygon, amoy, bsc, bsc testnet, arbitrum, base, base sepolia, optimism, linea, linea sepolia, avalanche, fantom, cronos, gnosis, gnosis testnet, chiliz, chiliz testnet, moonbeam, moonriver, moonbase, flow, flow-testnet, ronin, ronin-testnet, lisk, lisk-sepolia, pulse, sei, sei-testnet')
+      chain: z.string().describe('Chain to check - options: eth, sepolia, holesky, polygon, amoy, bsc, bsc testnet, arbitrum, base, base sepolia, optimism, linea, linea sepolia, avalanche, fantom, cronos, gnosis, gnosis testnet, chiliz, chiliz testnet, moonbeam, moonriver, moonbase, flow, flow-testnet, ronin, ronin-testnet, lisk, lisk-sepolia, pulse, sei, sei-testnet, monad')
     },
     async ({ walletAddress, chain }: { walletAddress: string; chain: string }) => {
       const apiKey = env.MORALIS_API_KEY;

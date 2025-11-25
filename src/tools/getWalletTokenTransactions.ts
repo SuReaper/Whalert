@@ -6,7 +6,7 @@ import { getFearGreed, formatFearGreed } from '../utils.js';
 export function getWalletTokenTransactions(server: any) {
   server.tool(
     'getWalletTokenTransactions',
-    'Gets transaction history (last 5 transactions) for a wallet across ETH, Avalanche, and BSC chains.',
+    'Gets transaction history (last 5 transactions) for a wallet across ETH, Avalanche, BSC and Monad chains.',
     {
       walletAddress: z.string().describe('The wallet address to check (0x...)'),
       chain: z.string().optional().describe('Chain to check (eth, avalanche, bsc). If not provided, checks all chains.')
@@ -158,7 +158,7 @@ export function getWalletTokenTransactions(server: any) {
       }
 
       // same setup as the balance tool
-      const CHAINS = ['eth', 'avalanche', 'bsc'] as const;
+      const CHAINS = ['eth', 'avalanche', 'bsc', 'monad'] as const;
       const MORALIS_API_BASE = 'https://deep-index.moralis.io/api/v2.2';
 
       const fetchOptions: RequestInit = {
