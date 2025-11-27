@@ -35,6 +35,56 @@ Show me the token balance for wallet 0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb
 Show me recent whale transactions over $100,000
 ```
 
+## Architecture Overview
+```mermaid
+graph TB
+    subgraph Client["**AI Agent Layer**"]
+        A[MCP Client<br/>Roo Code / Cline / Claude]
+    end
+    
+    subgraph Server["**Whalert MCP Server**"]
+        B[SSE Endpoint]
+        C[Tool Router]
+        D[Alert Engine]
+        E[Telegram Handler]
+    end
+    
+    subgraph APIs["**External APIs**"]
+        F[Moralis<br/>Wallet & NFT Data]
+        G[DexCheck<br/>Whale Tracking]
+        H[Taapi<br/>Technical Analysis]
+        I[DEX Screener<br/>Token Prices]
+    end
+    
+    subgraph Storage["**Persistent Layer**"]
+        J[Cloudflare<br/>Storage]
+        K[Telegram Bot<br/>Notifications]
+    end
+    
+    A <-->|NullShot's MCP| B
+    B --> C
+    C -->|Token Data| F
+    C -->|Whale Txns| G
+    C -->|Indicators| H
+    C -->|Price Info| I
+    C <-->|Store/Retrieve| J
+    D -->|Check Alerts| J
+    D -->|Price Data| I
+    D -->|Send Alert| K
+    E <-->|Bot Commands| K
+    
+    classDef clientStyle fill:#7B68EE,stroke:#5D4FB3,stroke-width:3px,color:#fff,font-weight:bold
+    classDef serverStyle fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef apiStyle fill:#50C878,stroke:#3A9B5C,stroke-width:2px,color:#fff
+    classDef storageStyle fill:#FF6B6B,stroke:#CC5555,stroke-width:2px,color:#fff
+    
+    class A clientStyle
+    class B,C,D,E serverStyle
+    class F,G,H,I apiStyle
+    class J,K storageStyle
+```
+
+
 ## Features
 
 ### Available Tools
@@ -168,57 +218,6 @@ Add to your MCP settings configuration:
   }
 }
 ```
-
-## Architecture Overview
-```mermaid
-graph TB
-    subgraph Client["**AI Agent Layer**"]
-        A[MCP Client<br/>Roo Code / Cline / Claude]
-    end
-    
-    subgraph Server["**Whalert MCP Server**"]
-        B[SSE Endpoint]
-        C[Tool Router]
-        D[Alert Engine]
-        E[Telegram Handler]
-    end
-    
-    subgraph APIs["**External APIs**"]
-        F[Moralis<br/>Wallet & NFT Data]
-        G[DexCheck<br/>Whale Tracking]
-        H[Taapi<br/>Technical Analysis]
-        I[DEX Screener<br/>Token Prices]
-    end
-    
-    subgraph Storage["**Persistent Layer**"]
-        J[Cloudflare<br/>Storage]
-        K[Telegram Bot<br/>Notifications]
-    end
-    
-    A <-->|NullShot's MCP| B
-    B --> C
-    C -->|Token Data| F
-    C -->|Whale Txns| G
-    C -->|Indicators| H
-    C -->|Price Info| I
-    C <-->|Store/Retrieve| J
-    D -->|Check Alerts| J
-    D -->|Price Data| I
-    D -->|Send Alert| K
-    E <-->|Bot Commands| K
-    
-    classDef clientStyle fill:#7B68EE,stroke:#5D4FB3,stroke-width:3px,color:#fff,font-weight:bold
-    classDef serverStyle fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
-    classDef apiStyle fill:#50C878,stroke:#3A9B5C,stroke-width:2px,color:#fff
-    classDef storageStyle fill:#FF6B6B,stroke:#CC5555,stroke-width:2px,color:#fff
-    
-    class A clientStyle
-    class B,C,D,E serverStyle
-    class F,G,H,I apiStyle
-    class J,K storageStyle
-```
-
-
 
 ## Telegram Bot Commands
 
