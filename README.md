@@ -2,7 +2,7 @@
 
 A professional MCP server providing real-time blockchain data access, comprehensive token analysis, and automated price alerts via Telegram. All tools utilize free APIs suitable for personal usage.
 
-[![Built for NullShot](https://img.shields.io/badge/Nullshot-purple)](https://nullshot.ai)
+[![NullShot](https://img.shields.io/badge/Nullshot-purple-Hackaton-pink)](https://nullshot.ai)
 [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-orange)](https://workers.cloudflare.com)
 
 ## Usage Examples for simplicity
