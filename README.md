@@ -2,6 +2,23 @@
 
 A professional MCP server providing real-time blockchain data access, comprehensive token analysis, and automated price alerts via Telegram. All tools utilize free APIs suitable for personal usage.
 
+## Now, Why Whalert?
+
+### The Problem
+Crypto traders miss critical opportunities due to:
+- Manual price monitoring across multiple DEXs
+- Delayed whale movement notifications
+- Scattered blockchain data sources
+- Complex API integrations
+
+### Our Solution
+Whalert provides a unified MCP server that:
+- **Automates** price monitoring with 5-minute checks
+- **Delivers** alerts when conditions trigger
+- **Simplifies** blockchain data access through natural language tools
+
+**Result:** Traders can focus on strategy while Whalert handles monitoring.
+
 [![NullShot](https://img.shields.io/badge/Platform-%20Nullshot-purple)](https://nullshot.ai)
 [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-orange)](https://workers.cloudflare.com)
 
