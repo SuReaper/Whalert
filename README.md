@@ -2,6 +2,38 @@
 
 A professional MCP server providing real-time blockchain data access, comprehensive token analysis, and automated price alerts via Telegram. All tools utilize free APIs suitable for personal usage.
 
+## Usage Examples for simplicity
+
+### Setting Up Price Alerts
+
+```
+Set a price alert for PEPE when it reaches $0.000001
+```
+
+The system will:
+1. Search for PEPE token
+2. Show you matching options
+3. Confirm your selection
+4. Monitor price every 5 minutes
+5. Send Telegram notification when target is reached
+
+### Analyzing Tokens
+
+```
+Analyze BTC/USDT on 1h timeframe
+```
+
+### Checking Wallet Activity
+
+```
+Show me the token balance for wallet 0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb
+```
+
+### Tracking Whale Movements
+
+```
+Show me recent whale transactions over $100,000
+```
 
 ## Features
 
@@ -186,38 +218,7 @@ graph TB
     class J,K storageStyle
 ```
 
-## Usage Examples for simplicity
 
-### Setting Up Price Alerts
-
-```
-Set a price alert for PEPE when it reaches $0.000001
-```
-
-The system will:
-1. Search for PEPE token
-2. Show you matching options
-3. Confirm your selection
-4. Monitor price every 5 minutes
-5. Send Telegram notification when target is reached
-
-### Analyzing Tokens
-
-```
-Analyze BTC/USDT on 1h timeframe
-```
-
-### Checking Wallet Activity
-
-```
-Show me the token balance for wallet 0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb
-```
-
-### Tracking Whale Movements
-
-```
-Show me recent whale transactions over $100,000
-```
 
 ## Telegram Bot Commands
 
