@@ -219,6 +219,58 @@ Add to your MCP settings configuration:
 }
 ```
 
+## Complete Tools Reference
+
+### Available Tools with Parameters
+
+| Tool | Description | Parameters | Required | Default |
+|------|-------------|------------|----------|---------|
+| **tokenPriceAlert** | Sets up price alerts with Telegram notifications for specific tokens | `searchQuery` - Token name, symbol, or contract address<br/>`alertType` - Type: "price_above", "price_below", "percent_change"<br/>`targetValue` - Target price (USD) or percentage<br/>`telegramChatId` - Your Telegram chat ID | All required | - |
+| **confirmTokenAlert** | Confirms and activates a price alert after token selection | `tokenChoice` - Token number (1-5) from list<br/>`pairAddress` - Pair address of chosen token<br/>`tokenAddress` - Contract address<br/>`tokenSymbol` - Token symbol<br/>`tokenName` - Token name<br/>`chainId` - Blockchain network<br/>`currentPrice` - Current USD price<br/>`alertType` - Alert type<br/>`targetValue` - Target value<br/>`telegramChatId` - Telegram chat ID | All required | - |
+| **cancelAlert** | Cancels an active price alert by its ID | `alertId` - Alert ID to cancel<br/>`telegramChatId` - Optional chat ID for confirmation | `alertId` required | - |
+| **tokenAnalyzer** | Technical analysis using RSI, MACD, EMA, Bollinger Bands, etc. | `symbol` - Trading pair (e.g., BTC/USDT)<br/>`interval` - Timeframe: 1m, 5m, 15m, 30m, 1h, 2h, 4h, 12h, 1d, 1w | All required | - |
+| **tokenSecurityChecker** | Comprehensive security audit for token contracts | `contractAddress` - Token contract address (0x...)<br/>`chainId` - Chain ID (1=Ethereum, 56=BSC, etc.) | `contractAddress` required | chainId: 1 |
+| **tokenSearchAndInfo** | Search tokens and retrieve metadata (price, market cap, DEX info) | `searchQuery` - Token name or symbol | Required | - |
+| **whaleTracker** | Monitor large whale transactions across ETH and BSC chains | `minUsd` - Minimum USD value for transactions<br/>`page` - Page number for pagination | None required | minUsd: 10000<br/>page: 1 |
+| **transactionTracker** | Decode transaction hashes into human-readable format | `txHash` - Transaction hash (starts with 0x)<br/>`chain` - Blockchain: eth, bsc, polygon, avalanche, fantom, arbitrum, optimism | `txHash` required | chain: eth |
+| **getWalletTokenBalance** | Check token holdings across multiple chains | `walletAddress` - Wallet address (0x...)<br/>`minValue` - Minimum USD value to include | `walletAddress` required | minValue: 1 |
+| **getWalletTokenTransactions** | Retrieve recent transaction history (last 5) for any wallet | `walletAddress` - Wallet address (0x...)<br/>`chain` - Chain: eth, avalanche, bsc (checks all if not provided) | `walletAddress` required | - |
+| **getNFTByWallet** | View NFT collections owned by a wallet address | `walletAddress` - Wallet address (0x...)<br/>`chain` - Chain: eth, sepolia, polygon, bsc, arbitrum, base, optimism, avalanche, etc. | All required | - |
+| **getFearAndGreed** | Get current crypto market sentiment index (0-100 scale) | None | - | - |
+
+### Supported Chains by Tool
+
+**getWalletTokenBalance / getWalletTokenTransactions:**
+- Ethereum (eth)
+- Avalanche (avalanche)
+- Binance Smart Chain (bsc)
+- Monad (monad)
+
+**getNFTByWallet:**
+- eth, sepolia, holesky, polygon, amoy, bsc, bsc testnet, arbitrum, base, base sepolia, optimism, linea, linea sepolia, avalanche, fantom, cronos, gnosis, gnosis testnet, chiliz, chiliz testnet, moonbeam, moonriver, moonbase, flow, flow-testnet, ronin, ronin-testnet, lisk, lisk-sepolia, pulse, sei, sei-testnet, monad
+
+**tokenSecurityChecker Chain IDs:**
+- 1 = Ethereum
+- 56 = BSC
+- 42161 = Arbitrum
+- 137 = Polygon
+- 324 = zkSync
+- 59144 = Linea
+- 8453 = Base
+- 534352 = Scroll
+- 10 = Optimism
+- 43114 = Avalanche
+- 250 = Fantom
+- 25 = Cronos
+- And more (see full list in documentation)
+
+**transactionTracker:**
+- eth, bsc, polygon, avalanche, fantom, arbitrum, optimism
+
+**whaleTracker:**
+- Ethereum (ETH)
+- Binance Smart Chain (BSC)
+
 ## Telegram Bot Commands
 
 | Command | Description |
