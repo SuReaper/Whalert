@@ -288,4 +288,4 @@ Add to your MCP settings configuration:
 
 
 
-*Built with Nullshot's TypeScript MCP Framework.*
+*Built with Nullshot's TypeScript MCP Framework in ~100-200 Hours.*
