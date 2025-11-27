@@ -237,4 +237,4 @@ graph TB
 
 
 
-*Built with Nullshot's typescript mcp framework.*
+*Built with Nullshot's TypeScript MCP Framework.*
