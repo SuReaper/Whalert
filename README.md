@@ -17,7 +17,8 @@ Whalert provides a unified MCP server that:
 - **Delivers** alerts when conditions trigger
 - **Simplifies** blockchain data access through natural language tools
 
-**Result:** Traders can focus on strategy while Whalert handles monitoring.
+**Result:** Traders can focus on strategy while Whalert handles monitoring. Can be easily integrated to your OWN Agent to use for whatever blockchain purposes you need it for. No matter if you are a Trader, Researcher, Portfolio Manager or anyone else!
+
 
 [![NullShot](https://img.shields.io/badge/Platform-%20Nullshot-purple)](https://nullshot.ai)
 [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-orange)](https://workers.cloudflare.com)
