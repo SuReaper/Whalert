@@ -39,53 +39,55 @@ Show me recent whale transactions over $100,000
 ```
 
 ## Architecture Overview
-
-### Three-Layer Design
 ```mermaid
 graph TB
-    subgraph "Layer 1: AI Agent Clients"
-        A1[Claude Desktop]
-        A2[Roo Code]
-        A3[Custom Agent]
+    subgraph Client["**AI Agent Layer**"]
+        A[MCP Client<br/>Roo Code / Cline / Claude]
     end
     
-    subgraph "Layer 2: Whalert MCP Server"
-        B1[SSE Endpoint]
-        B2[Tool Router]
-        B3[Alert Engine5-min Cron]
-        B4[Telegram Handler]
+    subgraph Server["**Whalert MCP Server**"]
+        B[SSE Endpoint]
+        C[Tool Router]
+        D[Alert Engine]
+        E[Telegram Handler]
     end
     
-    subgraph "Layer 3: External Data Sources"
-        C1[MoralisWallet & NFTs]
-        C2[DexCheckWhale Txns]
-        C3[TaapiTechnical Analysis]
-        C4[DEX ScreenerToken Prices]
+    subgraph APIs["**External APIs**"]
+        F[Moralis<br/>Wallet & NFT Data]
+        G[DexCheck<br/>Whale Tracking]
+        H[Taapi<br/>Technical Analysis]
+        I[DEX Screener<br/>Token Prices]
     end
     
-    subgraph "Layer 4: Persistent Storage"
-        D1[Cloudflare StorageAlert State]
-        D2[Telegram BotUser Notifications]
+    subgraph Storage["**Persistent Layer**"]
+        J[Cloudflare<br/>Storage]
+        K[Telegram Bot<br/>Notifications]
     end
     
-    A1 & A2 & A3 --> B1
-    B1 --> B2
-    B2 --> C1 & C2 & C3 & C4
-    B2  D1
-    B3 --> D1
-    B3 --> D2
-    B4  D2
+    A <-->|NullShot's MCP| B
+    B --> C
+    C -->|Token Data| F
+    C -->|Whale Txns| G
+    C -->|Indicators| H
+    C -->|Price Info| I
+    C <-->|Store/Retrieve| J
+    D -->|Check Alerts| J
+    D -->|Price Data| I
+    D -->|Send Alert| K
+    E <-->|Bot Commands| K
     
-    classDef agent fill:#7B68EE,stroke:#5D4FB3,stroke-width:3px
-    classDef server fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px
-    classDef external fill:#50C878,stroke:#3A9B5C,stroke-width:2px
-    classDef storage fill:#FF6B6B,stroke:#CC5555,stroke-width:2px
+    classDef clientStyle fill:#7B68EE,stroke:#5D4FB3,stroke-width:3px,color:#fff,font-weight:bold
+    classDef serverStyle fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef apiStyle fill:#50C878,stroke:#3A9B5C,stroke-width:2px,color:#fff
+    classDef storageStyle fill:#FF6B6B,stroke:#CC5555,stroke-width:2px,color:#fff
     
-    class A1,A2,A3 agent
-    class B1,B2,B3,B4 server
-    class C1,C2,C3,C4 external
-    class D1,D2 storage
+    class A clientStyle
+    class B,C,D,E serverStyle
+    class F,G,H,I apiStyle
+    class J,K storageStyle
 ```
+
+
 
 
 ## Features
@@ -240,6 +242,15 @@ Add to your MCP settings configuration:
 | **getWalletTokenTransactions** | Retrieve recent transaction history (last 5) for any wallet | `walletAddress` - Wallet address (0x...)<br/>`chain` - Chain: eth, avalanche, bsc (checks all if not provided) | `walletAddress` required | - |
 | **getNFTByWallet** | View NFT collections owned by a wallet address | `walletAddress` - Wallet address (0x...)<br/>`chain` - Chain: eth, sepolia, polygon, bsc, arbitrum, base, optimism, avalanche, etc. | All required | - |
 | **getFearAndGreed** | Get current crypto market sentiment index (0-100 scale) | None | - | - |
+
+### API Rate Limits (Free Tier)
+| API | Monthly Limit |
+|-----|---------------|
+| Moralis | 40,000 credits/day |
+| DexCheck | 5,000 requests/month |
+| Taapi | 5,000 requests/month |
+| DEX Screener | Unlimited |
+
 
 ### Supported Chains by Tool
 
