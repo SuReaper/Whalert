@@ -287,5 +287,4 @@ Add to your MCP settings configuration:
 - Supports multiple alert types: price_above, price_below, percent_change
 
 
-
 *Built with Nullshot's TypeScript MCP Framework in ~100-200 Hours.*
